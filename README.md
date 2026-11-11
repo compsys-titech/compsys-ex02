@@ -84,8 +84,11 @@ compsys-ex02/
 │   ├── example_start.S
 │   ├── task_start.S
 │   └── trace-example.gdb
-└── build/
-    └── .gitkeep
+├── build/
+│   └── .gitkeep
+└── report/
+    ├── README.md
+    └── ex02-report-template.docx
 ```
 
 | 場所 | 役割 | 受講者の操作 |
@@ -98,6 +101,8 @@ compsys-ex02/
 | [tools/example_start.S](tools/example_start.S)，[tools/task_start.S](tools/task_start.S) | スタックと入力を用意し，C関数を呼ぶ | 編集しない |
 | [tools/trace-example.gdb](tools/trace-example.gdb) | 例題の命令を実行し，CPU状態を表示 | 編集しない |
 | `build/` | 生成物の置き場 | 生成されたファイルを読む |
+| [report/README.md](report/README.md) | 正式な設問と記入ガイド | 読む |
+| [report/ex02-report-template.docx](report/ex02-report-template.docx) | 標準のWordレポート雛形 | リポジトリ外へコピーして記入する |
 | [AGENTS.md](AGENTS.md) | 教材保守時の作業指針 | 受講者は読む必要なし |
 | [.gitignore](.gitignore)，`build/.gitkeep` | Gitの管理設定と空ディレクトリの維持 | 編集しない |
 
@@ -275,13 +280,47 @@ make task
 
 授業資料の課題Aでは呼出し・戻り先，課題Bではスタックの保存・復元，課題Cでは値の変化を観察する．命令とフレームは自分の生成物を根拠に読み，呼出し先と戻り先には `task.elf.dump` のアドレスを使う．例題の結果を課題へ転記しない．課題の値は命令から追い，例題の実測ログと区別する．
 
-課題用の自動トレースは提供しない．正式な設問・記入欄は授業資料とLMSの案内を参照する．
+課題用の自動トレースは提供しない．正式な設問・記入欄は[レポート記入ガイド](report/README.md)と[Word雛形](report/ex02-report-template.docx)を参照する．課題Aは呼出しと戻り先，Bはスタック図，Cは値の変化と短答である．
 
 ## 12．提出時の注意
 
-レポート雛形，正式な提出仕様，ZIPの内容，締切は授業資料とScience Tokyo LMSで案内する．このリポジトリにはWord雛形や確定版のレポート記入ガイドを含めていない．
+標準の[Word雛形](report/ex02-report-template.docx)をリポジトリ外へコピーし，`学籍番号_ex02_report.docx` として記入する．LaTeX等を使う場合も，見出し・設問番号・表の行と列・回答順序を保つ．記入方法は[レポート記入ガイド](report/README.md)を参照する．
 
-GCC・QEMU本体，取得したツールのアーカイブ，`.git/`，個人用の一時ファイルは提出ZIPへ入れない．ソースとMakefileを変更せず，自分の生成物と説明・図・値の対応を確認する．元リポジトリへのpushやPull Requestは不要である．
+**2026年12月25日（金）23:59（日本時間）**までに，次の2ファイルをScience Tokyo LMSへ提出する．`学籍番号`は自分の学籍番号へ置き換える．遅延提出は減点対象となる．変更・追加の連絡はLMSと授業Slackで確認する．
+
+| 提出ファイル | 内容 |
+| --- | --- |
+| `学籍番号_ex02_report.pdf` | 記入済みレポート．PDFを開き，文字・表・図が読めることを確認する |
+| `学籍番号_ex02_code.zip` | 下記のソース・補助ファイルと，自分で生成した例題・課題の生成物 |
+
+ZIPを作る前に `make all` を実行する．OSの圧縮機能を使い，作業用フォルダーへコピーした次の内容をまとめる．ZIP内の最上位フォルダーは有無を問わないが，内部の相対配置を保つ．
+
+```text
+README.md
+Makefile
+src/example.c
+src/task.c
+tools/link.ld
+tools/example_start.S
+tools/task_start.S
+tools/trace-example.gdb
+build/example.s
+build/example.o
+build/example.dump
+build/example_start.o
+build/example.elf
+build/example.elf.dump
+build/task.s
+build/task.o
+build/task.dump
+build/task_start.o
+build/task.elf
+build/task.elf.dump
+```
+
+GCC・QEMU本体，取得アーカイブ，`.git/`，作業用Word，レポートPDF，個人用の一時ファイルはZIPへ入れない．Word文書は手元に保管し，提出しない．ソースとMakefileを変更せず，自分の生成物と説明・図・値の対応を確認する．元リポジトリへのpushやPull Requestは不要である．
+
+評価するのは，自分の生成物に基づく呼出し・戻り先・保存・復元の理解，命令・図・値の整合性，指定項目と提出形式である．文章量や装飾は評価しない．詳細配点・部分点は非公開であり，全欄の記入や外部ツールの自己採点は得点を保証しない．
 
 ## 13．トラブルシューティング
 
