@@ -47,8 +47,9 @@
 | 実際に確認した環境 | 確認内容 |
 | --- | --- |
 | macOS 27.2.1／Apple Silicon（arm64），GNU Make 3.81 | 生成，QEMU・GDBでの命令トレース，空白パス，並列ビルド |
+| Debian GNU/Linux 13（trixie）／x86_64 | 生成，QEMU・GDBでの命令トレース，空白パス，並列ビルド |
 
-第2回の教材は，GNU/Linux，Windows x64，macOS Intel，西8計算機実習室GNU/Linuxでは未検証である．第1回の確認結果を，第2回の確認済みとは扱わない．
+Windows x64および西8計算機実習室GNU/Linuxについては，TAによる確認を予定している．
 
 ## 4．教材の取得・更新
 
